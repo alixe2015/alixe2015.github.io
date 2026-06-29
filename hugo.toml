@@ -1,0 +1,58 @@
+baseURL = 'https://alixe2015.github.io/'
+locale = 'zh-cn'
+title = '月小意 (用AI技术服务日常生活)'
+theme = 'PaperMod'
+enableEmoji = true
+paginate = 10
+summaryLength = 120
+
+[params]
+  dateFormat = '2006-01-02'
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowToc = true
+  TocOpen = false
+  [params.assets]
+    disableHLJS = true
+  [params.homeInfoParams]
+    Title = '你好 👋 我是月小意'
+    Content = '用AI技术服务日常生活，探索人工智能让每一天变得更美好的可能。'
+  [params.social]
+    facebook_admin = ''
+
+[markup]
+  [markup.highlight]
+    style = 'monokai'
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = false
+    guessSyntax = true
+
+[[menu.main]]
+  name = '归档'
+  url = '/archives/'
+  weight = 10
+
+[[menu.main]]
+  name = '标签'
+  url = '/tags/'
+  weight = 20
+
+[[menu.main]]
+  name = '搜索'
+  url = '/search/'
+  weight = 30
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+  section = ['HTML', 'RSS']
+
+[privacy]
+  [privacy.googleAnalytics]
+    disabled = true
+  [privacy.youtube]
+    privacyEnhanced = true
