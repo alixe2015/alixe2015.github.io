@@ -1,0 +1,30 @@
+.flying-demo{margin:2rem 0 3rem;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 50% 90%,rgba(47,91,151,.22),transparent 58%),#0b1020;color:#f4f7ff}
+.flying-demo__copy{padding:1.5rem 1.5rem .5rem;text-align:center}
+.flying-demo__eyebrow{margin:0 0 .5rem;color:#8ec5ff;font-size:.72rem;letter-spacing:.18em;font-weight:700}
+.flying-demo__copy h2{margin:.2rem 0 .6rem;color:#f4f7ff;font-size:clamp(1.5rem,4vw,2.2rem)}
+.flying-demo__copy p:last-child{margin:0 auto;max-width:34rem;color:#b8c3d8}
+.flying-stage{height:440px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;isolation:isolate}
+.flying-stars,.flying-stars:before,.flying-stars:after{position:absolute;inset:0;content:"";pointer-events:none;background-image:radial-gradient(1px 1px at 12% 18%,#dceaff 99%,transparent),radial-gradient(1px 1px at 72% 22%,#dceaff 99%,transparent),radial-gradient(1px 1px at 84% 65%,#dceaff 99%,transparent),radial-gradient(1px 1px at 24% 72%,#dceaff 99%,transparent),radial-gradient(1px 1px at 55% 44%,#dceaff 99%,transparent);opacity:.6}
+.flying-stars:before{transform:translate(35px,28px) scale(1.2);opacity:.45}
+.flying-stars:after{transform:translate(-25px,-18px) scale(.8);opacity:.35}
+.flying-button{--thrust-color:#8ec5ff;--smoke-color:#eef1f6;position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;min-width:150px;padding:1rem 2.1rem;border:1px solid rgba(190,220,255,.65);border-radius:999px;background:linear-gradient(145deg,#f4f8ff,#b9d9ff);color:#07152a;font:700 1rem/1.2 inherit;letter-spacing:.03em;cursor:pointer;box-shadow:0 0 22px rgba(105,173,255,.2),inset 0 1px 0 #fff;transform:translate3d(0,0,0);transition:box-shadow .25s ease,filter .25s ease;touch-action:manipulation}
+.flying-button:hover,.flying-button:focus-visible{outline:none;box-shadow:0 0 30px rgba(105,173,255,.55),0 0 70px rgba(105,173,255,.18),inset 0 1px 0 #fff;filter:brightness(1.06)}
+.flying-button__label{position:relative;z-index:4}
+.flying-button__glow{position:absolute;inset:-12px;border-radius:inherit;background:var(--thrust-color);filter:blur(22px);opacity:0;z-index:-1;transition:opacity .25s ease}
+.flying-button:hover .flying-button__glow,.flying-button.is-ignited .flying-button__glow{opacity:.25}
+.flying-button__flame{position:absolute;top:calc(100% - 1px);width:13px;height:29px;border-radius:0 0 70% 70%;background:linear-gradient(to bottom,#fff,var(--thrust-color) 35%,rgba(70,150,255,0));opacity:0;filter:blur(1px);transform-origin:top;pointer-events:none}
+.flying-button__flame--left{left:34%}.flying-button__flame--right{right:34%}
+.flying-button:hover .flying-button__flame,.flying-button.is-ignited .flying-button__flame{opacity:.95;animation:flame-flicker .13s infinite alternate}
+.flying-stage.is-launching .flying-button{animation:flying-lift 2.4s cubic-bezier(.2,.75,.25,1) forwards}
+.flying-stage.is-launching .flying-button__glow{opacity:.55}
+.flying-stage.is-launching .flying-button__flame{opacity:1}
+.flying-smoke{position:absolute;z-index:1;bottom:calc(50% - 82px);left:50%;width:120px;height:55px;transform:translateX(-50%);pointer-events:none}
+.flying-smoke span{position:absolute;bottom:0;width:24px;height:24px;border-radius:50%;background:var(--smoke-color,#eef1f6);filter:blur(7px);opacity:0}
+.flying-stage.is-launching .flying-smoke span{animation:smoke-rise 1.15s ease-out forwards}
+.flying-stage.is-launching .flying-smoke span:nth-child(2n){animation-delay:.12s}.flying-stage.is-launching .flying-smoke span:nth-child(3n){animation-delay:.24s}
+.flying-stage__hint{position:absolute;bottom:1.1rem;z-index:2;margin:0;color:#8e9db7;font-size:.65rem;letter-spacing:.15em;text-align:center}
+.flying-stage.is-launched .flying-stage__hint{color:#8ec5ff}
+@keyframes flame-flicker{from{transform:scaleY(.8) scaleX(.85)}to{transform:scaleY(1.15) scaleX(1.08)}}
+@keyframes flying-lift{0%{transform:translate3d(0,0,0) rotate(0)}12%{transform:translate3d(0,5px,0) rotate(-1deg)}22%{transform:translate3d(0,-8px,0) rotate(1deg)}100%{transform:translate3d(0,-170px,0) rotate(0);opacity:.08;filter:blur(2px)}}
+@keyframes smoke-rise{0%{transform:translate3d(0,0,0) scale(.4);opacity:0}20%{opacity:.38}100%{transform:translate3d(var(--drift,0),-75px,0) scale(1.8);opacity:0}}
+@media(prefers-reduced-motion:reduce){.flying-button,.flying-button__flame,.flying-stage.is-launching .flying-button,.flying-stage.is-launching .flying-smoke span{animation:none!important;transition:none!important}.flying-stage.is-launching .flying-button{opacity:.3}}
