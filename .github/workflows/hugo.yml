@@ -43,6 +43,19 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: flying-button-app/package-lock.json
+
+      - name: Build FlyingButton React demo
+        working-directory: flying-button-app
+        run: |
+          npm ci
+          npm run build
+
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: "${{ runner.temp }}/hugo_cache"
