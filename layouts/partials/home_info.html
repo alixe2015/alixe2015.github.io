@@ -1,0 +1,47 @@
+{{- with site.Params.homeInfoParams }}
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1>{{ .Title | markdownify }}</h1>
+    </header>
+    <div class="entry-content">
+        {{ .Content | markdownify }}
+    </div>
+    <footer class="entry-footer">
+        {{ partial "social_icons.html" site.Params.socialIcons }}
+    </footer>
+</article>
+{{- end }}
+
+<section class="flying-demo" aria-labelledby="flying-demo-title">
+    <div class="flying-demo__copy">
+        <p class="flying-demo__eyebrow">INTERACTIVE DEMO</p>
+        <h2 id="flying-demo-title">Ready for takeoff?</h2>
+        <p>Hover over the button to ignite the thrusters. Click it to launch the sequence.</p>
+    </div>
+    <div class="flying-stage">
+        <div class="flying-stars" aria-hidden="true"></div>
+        <button
+            class="flying-button"
+            type="button"
+            data-altitude="170"
+            data-hover-time="2.4"
+            data-jets="2"
+            data-thrusters="true"
+            data-trigger="hover"
+            data-carry-cursor="true"
+            data-smoke="1"
+            data-turbulence="1"
+            data-wobble="1"
+            data-ramp="false"
+            data-thrust-color="#8ec5ff"
+            data-smoke-color="#eef1f6"
+            aria-label="Take off">
+            <span class="flying-button__glow" aria-hidden="true"></span>
+            <span class="flying-button__label">Take off</span>
+            <span class="flying-button__flame flying-button__flame--left" aria-hidden="true"></span>
+            <span class="flying-button__flame flying-button__flame--right" aria-hidden="true"></span>
+        </button>
+        <p class="flying-stage__hint" aria-live="polite">HOVER TO IGNITE · CLICK TO LAUNCH</p>
+        <div class="flying-smoke" aria-hidden="true"></div>
+    </div>
+</section>
