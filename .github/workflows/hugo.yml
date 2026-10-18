@@ -53,7 +53,7 @@ jobs:
       - name: Build FlyingButton React demo
         working-directory: flying-button-app
         run: |
-          npm ci
+          npm install
           npm run build
 
       - name: Build with Hugo
